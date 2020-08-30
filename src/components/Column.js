@@ -1,4 +1,5 @@
 import React from "react";
+import Task from './Task';
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -17,7 +18,11 @@ const Column = ({ key, column, tasks }) => {
   return (
     <Container>
       <Title>{column.title}</Title>
-      <TaskList>Tasks go here</TaskList>
+      <TaskList>
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
+        ))}
+      </TaskList>
     </Container>
   );
 };
