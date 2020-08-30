@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import initialData from "./initial-data";
+import Column from "./Column";
 
 function App() {
-  return <div className="App">STart</div>;
+  const [column, setColumn] = useState(initialData.columns);
+  const [tasks, setTasks] = useState(
+    column.taskIds.map((taskId) => initialData.tasks[taskId])
+  );
+
+  return <Column key={column.id} column={column} tasks={tasks} />;
 }
 
 export default App;
