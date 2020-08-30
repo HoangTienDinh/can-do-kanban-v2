@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import initialData from "./initial-data";
 import Column from "./components/Column";
+import { DragDropContext } from "react-beautiful-dnd";
 
 function App() {
   const [column, setColumn] = useState(initialData.columns);
@@ -8,7 +9,15 @@ function App() {
     column.taskIds.map((taskId) => initialData.tasks[taskId])
   );
 
-  return <Column key={column.id} column={column} tasks={tasks} />;
+  const onDragEnd = () => {
+    // waiting
+  }
+  return (
+    <DragDropContext
+    onDragEnd={onDragEnd}>
+      <Column key={column.id} column={column} tasks={tasks} />
+    </DragDropContext>
+  );
 }
 
 export default App;
